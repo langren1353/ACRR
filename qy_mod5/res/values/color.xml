@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="background">#F2F1F1</color>
+    <color name="orange">#FF6205</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="littlegray">#F0F0F0</color>
+    <color name="littlegrayPlus">#E4E4E4</color>
+    <color name="btn_selected">#FFE4D2</color>
+    <color name="littleyellow">#FEF2D8</color>
+    <color name="blue">#2782D1</color>
+    <color name="newsline">#9E6F66</color>
+</resources>

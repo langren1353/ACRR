@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.xxxxx.ac.Activity.MainActivity" >
+
+    <RadioGroup
+        android:id="@+id/radio_tabBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_bottom_s1"
+            android:gravity="center_horizontal"
+            android:text="@string/btn_bottom1" 
+            android:textColor="@drawable/tab_bottom_text"/>
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_bottom2" 
+            android:drawableTop="@drawable/tab_bottom_s2"
+            android:gravity="center_horizontal"
+			android:button="@null"
+			android:textColor="@drawable/tab_bottom_text"/>
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_bottom_s3"
+            android:gravity="center_horizontal"
+            android:text="@string/btn_bottom3"
+            android:textColor="@drawable/tab_bottom_text" />
+
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_bottom_s4"
+            android:gravity="center_horizontal"
+            android:text="@string/btn_bottom4"
+            android:textColor="@drawable/tab_bottom_text" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/radio_tabBottom"
+        android:layout_weight="1" >
+
+    </FrameLayout>
+
+</RelativeLayout>

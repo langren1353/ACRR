@@ -1,0 +1,223 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/littlegray"
+    android:orientation="vertical"
+    tools:context="com.xxxxx.ac.frame.Fragment4" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/list_view_style_selector"
+            android:gravity="center"
+            android:padding="6dp" >
+
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="通用设置"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View04"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCmyacount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_account" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的账号" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCbind"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_account_bind" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="账号绑定" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCgprsPic"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_no_pic" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2G/3G加载图片" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/setting_btn_toggle"
+            android:text="ToggleButton"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCfeedback"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_feedback" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="意见反馈" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCcomment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_comment" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="评价" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCupdate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_checkupdate" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="检查更新" />
+
+        <TextView
+            android:id="@+id/CurentVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:text="当前版本:V1.0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CKCabout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/list_view_style_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_btn_about" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="关于" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xxxxx.ac.frame.Fragment1" >
+
+    <ImageView
+        android:id="@+id/GDmap_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/title_left" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/map_car"
+            android:gravity="center_horizontal"
+            android:text="X分钟"
+            android:textColor="@drawable/tab_bottom_text"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:button="@null"
+            android:drawableTop="@drawable/map_bus"
+            android:gravity="center_horizontal"
+            android:text="X分钟"
+            android:textColor="@drawable/tab_bottom_text"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableTop="@drawable/map_walk"
+            android:gravity="center_horizontal"
+            android:text="X分钟"
+            android:textColor="@drawable/tab_bottom_text"
+            android:textSize="10sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/orange"
+        android:layout_marginRight="8dp"
+        android:text="使用其他地图" />
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/MapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/radioGroup1" />
+
+</RelativeLayout>

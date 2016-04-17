@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noupdate"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="版本更新检查"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="当前已经是最新版本！                                        " />
+		<View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"/>
+        <TextView
+            android:id="@+id/updateOKBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:background="@color/littlegray"
+            android:text="确定"
+            android:textSize="23sp" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.xxxxx.ac.Activity.ShopInfo" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:gravity="left"
+            android:padding="6dp" >
+
+            <ImageView
+                android:id="@+id/news_title_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/title_left" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/title_shared" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/News_body"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="4dp"
+                    android:background="#D85E4B"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="fill_parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="8sp"
+                    android:text="资料来源：" />
+				<TextView
+                    android:id="@+id/news_from"
+                    android:layout_width="wrap_content"
+                    android:textSize="8sp"
+                    android:layout_height="wrap_content"
+                    android:text="百度新闻" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/news_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="TextView" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="wrap_content"
+                android:background="@color/newsline"
+                android:layout_height="1dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
