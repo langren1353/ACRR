@@ -6,10 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
-import com.alibaba.sdk.android.security.impl.i;
-import com.amap.api.mapcore2d.da;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.xxxxx.ac.MOD.baidu.Mod_Data;
