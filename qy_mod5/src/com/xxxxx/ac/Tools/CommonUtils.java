@@ -1,11 +1,11 @@
 package com.xxxxx.ac.Tools;
 
-import java.text.SimpleDateFormat;
-
 import org.junit.Test;
 
-import android.R.integer;
-import android.renderscript.Type;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class CommonUtils {
 	/**
@@ -65,5 +65,20 @@ public class CommonUtils {
 	public void dksilj(){
 		long dd = 1460448046000L;
 		System.out.println(getOldTimetoNow(dd));
+	}
+	
+	/**
+	 * 带上content之后，直接就能调用返回方法
+	 * 
+	 */
+	public static class MyFinishClickListener implements OnClickListener{
+		private Context context;
+		public MyFinishClickListener(Context context){
+			this.context = context;
+		}
+		@Override
+		public void onClick(View v) {
+			 ((Activity)context).finish();
+		}
 	}
 }

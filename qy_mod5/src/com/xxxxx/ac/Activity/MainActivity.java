@@ -31,7 +31,7 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		x.view().inject(this);
 		initRadioGroup();
-		fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 1));
+		fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 0));
 		fragmentPagerAdapter.finishUpdate(frameLayout);
 	}
 	

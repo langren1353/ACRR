@@ -1,6 +1,8 @@
 package com.xxxxx.ac.MOD;
 
-public class Mod_Shops {
+import java.io.Serializable;
+
+public class Mod_Shops implements Serializable{
 	int id;
 	String name_sub;
 	String detail;
@@ -9,8 +11,9 @@ public class Mod_Shops {
 	String addr_lat;
 	String addr_lon;
 	String addr_text;
-	String discript;
+	String services;
 	String pic_main;
+	public static String SHOPINFO = "SHOPINFO";
 	
 	public int getId() {
 		return id;
@@ -60,11 +63,11 @@ public class Mod_Shops {
 	public void setAddr_text(String addr_text) {
 		this.addr_text = addr_text;
 	}
-	public String getDiscript() {
-		return discript;
+	public String getServices() {
+		return services;
 	}
-	public void setDiscript(String discript) {
-		this.discript = discript;
+	public void setServices(String services) {
+		this.services = services;
 	}
 	public String getPic_main() {
 		return pic_main;

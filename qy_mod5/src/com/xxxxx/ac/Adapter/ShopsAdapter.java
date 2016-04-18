@@ -9,12 +9,14 @@ import org.xutils.view.annotation.ViewInject;
 import com.google.gson.Gson;
 import com.xxxxx.ac.R;
 import com.xxxxx.ac.Activity.GDMapActivity;
+import com.xxxxx.ac.Activity.ShopInfoActivity;
 import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.MOD.Mod_Shops;
 
 import android.R.layout;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,7 +76,7 @@ public class ShopsAdapter extends BaseAdapter {
 		holder.titleTextView.setText(shop.getName_sub());
 		// holder.starImageView.set 特殊，暂时不设置
 		holder.locationTextView.setText(shop.getAddr_text());
-		holder.servicesTextView.setText(shop.getDiscript());
+		holder.servicesTextView.setText(shop.getServices());
 		// holder.farawayTextView 特殊，暂时不设置
 		holder.layout.setOnClickListener(new myCLickListener(position));
 		return convertView;
@@ -90,8 +92,14 @@ public class ShopsAdapter extends BaseAdapter {
 		@Override
 		public void onClick(View v) {
 			Log.e("DEBUG", "点击位置 " + position);
+//			Intent intent = new Intent();
+//			intent.setClass(context, GDMapActivity.class);
+//			context.startActivity(intent);
 			Intent intent = new Intent();
-			intent.setClass(context, GDMapActivity.class);
+			intent.setClass(context, ShopInfoActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putSerializable(Mod_Shops.SHOPINFO, shops.get(position));
+			intent.putExtras(bundle);
 			context.startActivity(intent);
 		}
 	}

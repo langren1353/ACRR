@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.xxxxx.ac.R;
 import com.xxxxx.ac.MOD.baidu.Mod_Content;
 import com.xxxxx.ac.MOD.baidu.Mod_News;
+import com.xxxxx.ac.Tools.CommonUtils;
 
 public class NewsDetailActivity extends FragmentActivity {
 	@ViewInject(R.id.News_body)
@@ -79,12 +80,7 @@ public class NewsDetailActivity extends FragmentActivity {
 				}
 			}
 		}
-		buttonLeft.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+		buttonLeft.setOnClickListener(new CommonUtils.MyFinishClickListener(this));
 	}
 
 }

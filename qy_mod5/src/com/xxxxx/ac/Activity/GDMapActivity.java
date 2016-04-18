@@ -24,6 +24,7 @@ import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.MyLocationStyle;
 import com.xxxxx.ac.R;
+import com.xxxxx.ac.Tools.CommonUtils;
 
 public class GDMapActivity extends Activity implements AMapLocationListener, LocationSource{
 	@ViewInject(R.id.MapView)
@@ -58,13 +59,7 @@ public class GDMapActivity extends Activity implements AMapLocationListener, Loc
 			aMap = mapView.getMap();
 			setUpMap();
 		}
-		GDmap_back.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-				onDestroy();
-			}
-		});
+		GDmap_back.setOnClickListener(new CommonUtils.MyFinishClickListener(this));
 	}
 
 	/**

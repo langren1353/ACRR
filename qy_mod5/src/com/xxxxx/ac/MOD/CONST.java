@@ -1,7 +1,8 @@
 package com.xxxxx.ac.MOD;
 
 public class CONST {
-	public static String host = "http://abscoin.iask.in/QYMod";
+//	public static String host = "http://abscoin.iask.in/QYMod";
+	public static String host = "http://indarkness.imwork.net/ACRR_Server";
 	public static String defaultShopUrl = "/ShopPics/default.jpg";
 	public static String uploadServlet = "/upload";
 	public static String getGoosServlet = "/getShops";
