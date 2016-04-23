@@ -137,7 +137,7 @@
             android:textColor="#808080" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnRegister"
             android:layout_width="fill_parent"
             android:layout_height="35dp"
             android:layout_margin="8dp"

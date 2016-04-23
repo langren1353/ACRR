@@ -20,6 +20,8 @@ import android.widget.ToggleButton;
 
 import com.umeng.fb.util.Log;
 import com.xxxxx.ac.R;
+import com.xxxxx.ac.ENTITY.Entity_Registe;
+import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.Tools.CommonUtils;
 
 public class UserRegisterActivity extends Activity {
@@ -37,6 +39,8 @@ public class UserRegisterActivity extends Activity {
 	Button						btnGetCheckCode;
 	@ViewInject(R.id.register_title_back)
 	ImageView					btnBack;
+	@ViewInject(R.id.btnRegister)
+	Button						btnDoRegister;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,5 +93,14 @@ public class UserRegisterActivity extends Activity {
 	private void GetCheckCodeEvent(View v){
 		Log.e("DEBUG2", "请求服务器");
 		Toast.makeText(this, "准备请求服务器发送验证码", 1).show();
+		Entity_Registe checkCode = new Entity_Registe();
+		checkCode.getCheckCode(CONST.telType, editTelText.getText().toString());
+	}
+	@Event(value=R.id.btnRegister, type=View.OnClickListener.class)
+	private void DoRegisterEvent(View v){
+		Log.e("DEBUG2", "准备正式注册：上传手机号、验证码、密码");
+		Toast.makeText(this, "正式注册", 1).show();
+		Entity_Registe checkCode = new Entity_Registe();
+		checkCode.getCheckCode(CONST.telType, editTelText.getText().toString());
 	}
 }

@@ -4,11 +4,11 @@ import org.xutils.x;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -19,11 +19,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xxxxx.ac.R;
+import com.xxxxx.ac.ENTITY.Entity_Login;
+import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.Tools.CommonUtils;
 
 public class UserLoginActivity extends Activity {
@@ -37,8 +40,10 @@ public class UserLoginActivity extends Activity {
 	EditText					editTextLogin2;
 	@ViewInject(R.id.btninLogin)
 	Button						btnInLoginButton;
+	@ViewInject(R.id.btnDoLogin)
+	Button						btnDoLoginButton;
 	@ViewInject(R.id.login_title_back)
-	Button						backButton;
+	ImageView						backButton;
 	
 	private Animation			aniMovetoRight, aniMovetoLeft;
 	private int loginType = 1;
@@ -63,6 +68,30 @@ public class UserLoginActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		editTextLogin2.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// Log.e("DEBUG2", "文字改变");
+				int len = editTextLogin2.getText().length();
+				if(loginType == 1){ //只有在{快速登录}输入{4}位验证码后触发
+					if(len == 4){
+						btnDoLoginButton.setEnabled(true);
+						btnDoLoginButton.setBackgroundResource(R.drawable.register_btn_bg);
+					}else{
+						btnDoLoginButton.setEnabled(false);
+						btnDoLoginButton.setBackgroundResource(R.drawable.register_btn_bg_click);
+					}
+				}
+			}
+		});
 		editTextLogin1.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -72,7 +101,7 @@ public class UserLoginActivity extends Activity {
 			}
 			@Override
 			public void afterTextChanged(Editable s) {
-				Log.e("DEBUG2", "文字改变");
+				// Log.e("DEBUG2", "文字改变");
 				int len = editTextLogin1.getText().length();
 				if(loginType == 1){ //只有在{快速登录}输入{11}位手机号之后触发
 					if(len == 11){
@@ -89,28 +118,38 @@ public class UserLoginActivity extends Activity {
 	
 	@Event(value=R.id.radioGroup1, type=RadioGroup.OnCheckedChangeListener.class)
 	private void LoginMethodChangeEvent(RadioGroup group, int checkedId){
-		Log.e("DEBUG2", "change login type");
+		// Log.e("DEBUG2", "change login type");
+		Editable etable = null;
 		switch (checkedId) {
 		case R.id.radio0:
 			loginType = 1;
 			codeType = 1;
+			editTextLogin2.setText("");
+			editTextLogin2.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});  
 			loginChooseBarView.startAnimation(aniMovetoLeft);
 			// 快速电话号码-验证码登录
 			editTextLogin1.setHint(R.string.login_tel_hint);
 			editTextLogin2.setHint(R.string.login_code_hint);
 			btnInLoginButton.setBackgroundResource(R.drawable.register_btn_getcode2);
+			editTextLogin2.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD); //hide
+			etable = editTextLogin2.getText();
+            Selection.setSelection(etable, etable.length());
 			btnInLoginButton.setText("获取验证码");
 			btnInLoginButton.setEnabled(false);
 			break;
 		case R.id.radio1:
 			loginType = 2;
 			codeType = 2;
+			editTextLogin2.setText("");
+			editTextLogin2.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});  
 			loginChooseBarView.startAnimation(aniMovetoRight);
 			// 普通账号-密码登录
 			editTextLogin1.setHint(R.string.login_account_hint);
 			editTextLogin2.setHint(R.string.login_pwd_hint);
 			btnInLoginButton.setBackgroundResource(R.drawable.hide_pwd);
-			editTextLogin2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD); //hide
+			editTextLogin2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+			etable = editTextLogin2.getText();
+            Selection.setSelection(etable, etable.length());
 			btnInLoginButton.setText("");
 			btnInLoginButton.setEnabled(true);
 			break;
@@ -123,21 +162,32 @@ public class UserLoginActivity extends Activity {
 		if(loginType == 2){
 			// change 图片事件
 			if(codeType == 1){ //show-->hide
+				// Log.e("DEBUG2", "切换到普通模式");
 				codeType = 2;
 				btnInLoginButton.setBackgroundResource(R.drawable.hide_pwd);
-				editTextLogin2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				editTextLogin2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); //HIDE模式
 	            Editable etable = editTextLogin2.getText();
 	            Selection.setSelection(etable, etable.length());
 			}else{
+				// Log.e("DEBUG2", "切换到密码模式");
 				codeType = 1;
 				btnInLoginButton.setBackgroundResource(R.drawable.show_pwd);
-				editTextLogin2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+				editTextLogin2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);// 普通模式
 				Editable etable = editTextLogin2.getText();
 	            Selection.setSelection(etable, etable.length());
 			}
 		}else{
 			// 获取验证码事件
-			Toast.makeText(this, "请求服务器获取验证码", 1).show();
+			Toast.makeText(this, "请求服务器发送验证码", 1).show();
+			Entity_Login entity_Login = new Entity_Login();
+			entity_Login.getCheckCode(CONST.telType, editTextLogin1.getText().toString());
+			//TODO 完成之后应该加上时间倒计时
 		}
+	}
+	@Event(value=R.id.btnDoLogin)
+	private void btnDoLoginEvent(View v){
+		// 传递手机号和验证码即可，不能单独传递验证码---->串号
+		Entity_Login entity_Login = new Entity_Login();
+		entity_Login.doLogin(CONST.CKcodeType, editTextLogin1.getText().toString(), editTextLogin2.getText().toString());
 	}
 }

@@ -4,11 +4,16 @@ public class CONST {
 //	public static String host = "http://abscoin.iask.in/QYMod";
 	public static String host = "http://indarkness.imwork.net/ACRR_Server";
 	public static String defaultShopUrl = "/ShopPics/default.jpg";
+	
 	public static String uploadServlet = "/upload";
 	public static String getGoosServlet = "/getShops";
 	public static String getNearBySearlet = "/getNearBy";
+	public static String getCheckCode = "/CodeCheck";
+	
 	public static String totalSetting = "TOTALSETTING";
 	public static String setting_gprs = "IS_GPRS_LOADPIC";
+	public static String telType = "1";
+	public static String CKcodeType = "2";
 	
 	public static String baiduNews = "http://api.baiyue.baidu.com/sn/api/sentimentlist";
 	public static class baiduNewsData{
