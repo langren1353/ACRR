@@ -7,6 +7,8 @@ import org.xutils.view.annotation.ViewInject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -48,6 +50,8 @@ public class UserLoginActivity extends Activity {
 	private Animation			aniMovetoRight, aniMovetoLeft;
 	private int loginType = 1;
 	private int codeType = 1; //=show, 2=hide
+	private Handler handler;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +63,19 @@ public class UserLoginActivity extends Activity {
 	}
 	
 	public void init(){
+		handler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				switch (msg.what) {
+				case 0:
+					break;
+				default:
+					break;
+				}
+				super.handleMessage(msg);
+			}
+			
+		};
 		backButton.setOnClickListener(new CommonUtils.MyFinishClickListener(this));
 		goRegisterBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -180,7 +197,7 @@ public class UserLoginActivity extends Activity {
 			// 获取验证码事件
 			Toast.makeText(this, "请求服务器发送验证码", 1).show();
 			Entity_Login entity_Login = new Entity_Login();
-			entity_Login.getCheckCode(CONST.telType, editTextLogin1.getText().toString());
+			entity_Login.getCheckCode(CONST.SendTelType, editTextLogin1.getText().toString(), handler);
 			//TODO 完成之后应该加上时间倒计时
 		}
 	}
@@ -188,6 +205,7 @@ public class UserLoginActivity extends Activity {
 	private void btnDoLoginEvent(View v){
 		// 传递手机号和验证码即可，不能单独传递验证码---->串号
 		Entity_Login entity_Login = new Entity_Login();
-		entity_Login.doLogin(CONST.CKcodeType, editTextLogin1.getText().toString(), editTextLogin2.getText().toString());
+		entity_Login.doLogin(CONST.CKLoginType, editTextLogin1.getText().toString(), editTextLogin2.getText().toString(), handler);
+		
 	}
 }

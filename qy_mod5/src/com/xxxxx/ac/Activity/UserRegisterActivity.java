@@ -42,6 +42,7 @@ public class UserRegisterActivity extends Activity {
 	@ViewInject(R.id.btnRegister)
 	Button						btnDoRegister;
 	
+	private String checkCode;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,16 +92,31 @@ public class UserRegisterActivity extends Activity {
 	}
 	@Event(value=R.id.BtnCheckCode, type=View.OnClickListener.class)
 	private void GetCheckCodeEvent(View v){
-		Log.e("DEBUG2", "请求服务器");
-		Toast.makeText(this, "准备请求服务器发送验证码", 1).show();
 		Entity_Registe checkCode = new Entity_Registe();
-		checkCode.getCheckCode(CONST.telType, editTelText.getText().toString());
+		switch(v.getId()){
+		
+			case R.id.BtnCheckCode:
+				Log.e("DEBUG2", "请求服务器发送验证码");
+				//Toast.makeText(this, "准备请求服务器发送验证码", 1).show();
+				checkCode.getCheckCode(CONST.SendTelType, editTelText.getText().toString());
+				break;
+				
+			case R.id.btnRegister:
+				Log.e("DEBUG2", "准备正式注册：上传手机号、验证码、密码");
+				//Toast.makeText(this, "正式注册", 1).show();
+				checkCode.getCheckCode(CONST.SendTelType, editTelText.getText().toString());
+				break;
+		}
 	}
-	@Event(value=R.id.btnRegister, type=View.OnClickListener.class)
-	private void DoRegisterEvent(View v){
-		Log.e("DEBUG2", "准备正式注册：上传手机号、验证码、密码");
-		Toast.makeText(this, "正式注册", 1).show();
-		Entity_Registe checkCode = new Entity_Registe();
-		checkCode.getCheckCode(CONST.telType, editTelText.getText().toString());
+	private boolean validateCanRegister(){
+		// 如果密码少于6位不能注册
+		// 如果密码1 != 密码2 不能注册
+		// 如果验证码不正确不能注册
+		
+		// 如果手机号已经存在不能注册，请登录
+		if(editPwdText.getText().length() < 6) return false;
+		if(!editPwdText.getText().equals(editPwd2Text.getText())) return false;
+		if(!editCheckCodeText.equals(checkCode)) return false;
+		return true;
 	}
 }

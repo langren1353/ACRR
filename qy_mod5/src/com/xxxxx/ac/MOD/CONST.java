@@ -12,8 +12,9 @@ public class CONST {
 	
 	public static String totalSetting = "TOTALSETTING";
 	public static String setting_gprs = "IS_GPRS_LOADPIC";
-	public static String telType = "1";
-	public static String CKcodeType = "2";
+	public static String SendTelType = "1";
+	public static String CKLoginType = "2";
+	public static String CKRegisterType = "3";
 	
 	public static String baiduNews = "http://api.baiyue.baidu.com/sn/api/sentimentlist";
 	public static class baiduNewsData{
