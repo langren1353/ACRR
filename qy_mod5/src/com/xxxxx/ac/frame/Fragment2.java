@@ -30,7 +30,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.xxxxx.ac.R;
 import com.xxxxx.ac.Adapter.NewsAdapter;
 import com.xxxxx.ac.ENTITY.Entity_News;
-import com.xxxxx.ac.ENTITY.RespData.ResponseObeject_BaiduNews;
+import com.xxxxx.ac.ENTITY.RespData.ResponseObject_BaiduNews;
 import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.MOD.baidu.Mod_News;
 import com.xxxxx.ac.Tools.SharedUtil_SharedPrefs;

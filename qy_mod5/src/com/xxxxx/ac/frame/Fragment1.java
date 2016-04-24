@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xutils.x;
-import org.xutils.common.Callback;
 import org.xutils.common.Callback.CommonCallback;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 
-import android.R.bool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,13 +20,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.xxxxx.ac.R;
 import com.xxxxx.ac.Adapter.ShopsAdapter;
-import com.xxxxx.ac.ENTITY.RespData.ResponseObeject;
+import com.xxxxx.ac.ENTITY.RespData.ResponseObject;
 import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.MOD.Mod_Shops;
 import com.xxxxx.ac.Tools.SharedUtil_SharedPrefs;
@@ -117,8 +116,10 @@ public class Fragment1 extends Fragment {
 			public void onSuccess(String arg0) {
 				
 				Gson gson = new Gson();
-				ResponseObeject responseObeject = gson.fromJson(arg0, ResponseObeject.class);
-				ArrayList<Mod_Shops> list = responseObeject.getList();
+				ResponseObject<ArrayList<Mod_Shops>> responseObeject = gson.fromJson(arg0, new TypeToken<ResponseObject<ArrayList<Mod_Shops>>>(){}.getType());
+//				ResponseListObeject responseObeject = gson.fromJson(arg0, ResponseListObeject.class);
+				@SuppressWarnings("unchecked")
+				ArrayList<Mod_Shops> list = (ArrayList<Mod_Shops>) responseObeject.getObject();
 				if(is_load == true){
 					Log.e("DEBUG2", "更新数据");
 					myDataList = list;
@@ -135,6 +136,7 @@ public class Fragment1 extends Fragment {
 			}
 		});
 	}
+    
 	// 应对叠层现象
 	@Override
 	public void setMenuVisibility(boolean menuVisible) {
@@ -142,4 +144,5 @@ public class Fragment1 extends Fragment {
 		if (this.getView() != null)
 			this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
 	}
+	
 }

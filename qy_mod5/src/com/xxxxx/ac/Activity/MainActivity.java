@@ -3,10 +3,14 @@ package com.xxxxx.ac.Activity;
 import org.xutils.x;
 import org.xutils.view.annotation.ViewInject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -24,7 +28,12 @@ public class MainActivity extends FragmentActivity {
 	@ViewInject(R.id.radio_tabBottom)
 	RadioGroup radioGroup;
 	FragmentPagerAdapter fragmentPagerAdapter;
-	
+
+	public FragmentTransaction mFragmentTransaction;
+	public FragmentManager fragmentManager;
+	public String curFragmentTag = "2";
+	Fragment fragment;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,7 +43,7 @@ public class MainActivity extends FragmentActivity {
 		fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 0));
 		fragmentPagerAdapter.finishUpdate(frameLayout);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -45,12 +54,13 @@ public class MainActivity extends FragmentActivity {
 		super.onPause();
 	}
 
-	public void initRadioGroup(){
+	public void initRadioGroup() {
 		fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 			@Override
 			public int getCount() {
 				return 4;
 			}
+
 			@Override
 			public Fragment getItem(int arg0) { // ID就是普通ID计数
 				Fragment fragment = null;
@@ -76,7 +86,6 @@ public class MainActivity extends FragmentActivity {
 			}
 		};
 
-		
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -97,10 +106,22 @@ public class MainActivity extends FragmentActivity {
 					index = 3;
 					break;
 				}
-				Fragment fragment = (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, index);
+				fragment = (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, index);
 				fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, fragment);
 				fragmentPagerAdapter.finishUpdate(frameLayout);
 			}
 		});
 	}
+    private void addFragment(Fragment fragment, String tag) {  
+        FragmentManager manager = getSupportFragmentManager();  
+        FragmentTransaction transaction = manager.beginTransaction();  
+        transaction.add(R.id.frame, fragment, tag);  
+        transaction.commit();
+    }
+//    @Override //同样的被调用了
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		super.onActivityResult(requestCode, resultCode, data);
+//		fragment.onActivityResult(requestCode, resultCode, data);
+//		Log.e("DEBUG2", "main接收");
+//	}
 }

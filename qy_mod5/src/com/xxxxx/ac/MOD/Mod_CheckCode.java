@@ -7,6 +7,7 @@ public class Mod_CheckCode implements Serializable{
 	private String 	checkCode;  // 验证码
 	private int		errIndex;	// 错误代码
 	private String 	errInfo;	// 错误信息
+	private Mod_UserInfo	respObject;
 	public boolean isTelExist() {
 		return isTelExist;
 	}
@@ -31,5 +32,10 @@ public class Mod_CheckCode implements Serializable{
 	public void setErrIndex(int errIndex) {
 		this.errIndex = errIndex;
 	}
-	
+	public Mod_UserInfo getRespObject() {
+		return respObject;
+	}
+	public void setRespObject(Mod_UserInfo respObject) {
+		this.respObject = respObject;
+	}
 }

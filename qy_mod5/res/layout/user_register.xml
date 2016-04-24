@@ -27,12 +27,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="注册" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/title_shared" />
     </LinearLayout>
 
     <LinearLayout
@@ -139,11 +133,11 @@
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="fill_parent"
-            android:layout_height="35dp"
-            android:layout_margin="8dp"
-            android:background="@color/gray"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/register_btn_bg_click"
             android:text="注册"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
 

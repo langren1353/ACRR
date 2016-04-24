@@ -6,7 +6,7 @@ import com.xxxxx.ac.MOD.Mod_Shops;
 import com.xxxxx.ac.MOD.baidu.Mod_Data;
 import com.xxxxx.ac.MOD.baidu.Mod_News;
 
-public class ResponseObeject_BaiduNews {
+public class ResponseObject_BaiduNews {
 	private int errno;
 	private Mod_Data data;
 	public int getErrno() {
