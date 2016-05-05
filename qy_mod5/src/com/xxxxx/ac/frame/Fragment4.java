@@ -1,6 +1,7 @@
 package com.xxxxx.ac.frame;
 
 import org.xutils.x;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
@@ -21,8 +22,11 @@ import android.widget.ToggleButton;
 
 import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
 import com.xxxxx.ac.R;
+import com.xxxxx.ac.ENTITY.Entity_CKUpdate;
 import com.xxxxx.ac.MOD.CONST;
+import com.xxxxx.ac.Tools.CommonUtils;
 import com.xxxxx.ac.Tools.SharedUtil_SharedPrefs;
+import com.xxxxx.ac.dialog.NoUpdateDialog;
 
 public class Fragment4 extends Fragment {
 	@ViewInject(R.id.CKCabout)
@@ -56,7 +60,7 @@ public class Fragment4 extends Fragment {
 		}
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.main_frame4, null);
 		x.view().inject(this, view);// 不加this参数将注解失败--针对fragement的注解
-		textView.setText("当前版本:V" + getVersion());
+		textView.setText("当前版本:V" + CommonUtils.getVersion(getActivity()));
 		gprsPicButton.setChecked(is_gprs_loadPIC);
 		return view;
 	}
@@ -97,7 +101,8 @@ public class Fragment4 extends Fragment {
 			// 检查更新
 			// Toast.makeText(getContext(), "暂时没有更新",
 			// Toast.LENGTH_SHORT).show();
-			showUpdateDialog();
+			//new NoUpdateDialog(getActivity());
+			new Entity_CKUpdate(getActivity()).checkUpdate();
 			break;
 		default:
 			Toast.makeText(getContext(), "点击事件哦", Toast.LENGTH_SHORT).show();
@@ -105,30 +110,5 @@ public class Fragment4 extends Fragment {
 		}
 	}
 
-	public String getVersion() {
-		PackageInfo manger = null;
-		try {
-			manger = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-			return manger.versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		return "Unknown";
-	}
 
-	public void showUpdateDialog() {
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_noupdate, null);
-		final Dialog dialog = new AlertDialog.Builder(getActivity()).create();
-		x.view().inject(dialog, view);
-		dialog.show();
-		dialog.getWindow().setContentView(view);
-		TextView btnOK = (TextView) view.findViewById(R.id.updateOKBtn);
-		btnOK.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getActivity(), "ok", Toast.LENGTH_SHORT).show();
-				dialog.dismiss();
-			}
-		});
-	}
 }

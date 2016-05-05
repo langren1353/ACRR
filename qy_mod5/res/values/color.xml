@@ -5,6 +5,7 @@
     <color name="background">#F2F1F1</color>
     <color name="orange">#FF6205</color>
     <color name="gray">#CCCCCC</color>
+    <color name="garyPlus">#C1C1C1</color>
     <color name="littlegray">#F0F0F0</color>
     <color name="littlegrayPlus">#E4E4E4</color>
     <color name="btn_selected">#FFE4D2</color>

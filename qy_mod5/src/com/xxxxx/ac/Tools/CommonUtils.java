@@ -1,9 +1,13 @@
 package com.xxxxx.ac.Tools;
 
+import java.text.DecimalFormat;
+
 import org.junit.Test;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -35,7 +39,16 @@ public class CommonUtils {
 		double max_lon = lon + delta_lon;
 		return new double[]{min_lat, max_lat, min_lon, max_lon};
 	}
-	
+	public static String getVersion(Context context) {
+		PackageInfo manger = null;
+		try {
+			manger = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+			return manger.versionName;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return "Unknown";
+	}
 	public static String getOldTimetoNow(long timestamp){
 		// 1分钟前..24分钟前
 		// 1小时前..24小时前
@@ -60,6 +73,11 @@ public class CommonUtils {
 		if(time > 7)
 			type = 3;
 		return time+text[type];
+	}
+	public static String getSize(int size){
+		double kk = size*1.0/1024/1024;
+		DecimalFormat decimalFormat = new DecimalFormat("0.##");
+		return decimalFormat.format(kk);
 	}
 	@Test
 	public void dksilj(){

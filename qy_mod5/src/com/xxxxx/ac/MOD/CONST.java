@@ -9,9 +9,15 @@ public class CONST {
 	public final static String getGoosServlet = "/getShops";
 	public final static String getNearBySearlet = "/getNearBy";
 	public final static String getCheckCode = "/CodeCheck";
+	public final static String updateUrl = "/update.jsp";
+	public final static String downloadUpdateUrl = "/apk/ACRR.apk";
 	
 	public final static String totalSetting = "TOTALSETTING";
 	public final static String setting_gprs = "IS_GPRS_LOADPIC";
+	
+	public static int screenWidth = 0;
+	public static int screenHeight = 0;
+	
 	
 	public final static String SendCKLoginType 	= "1";
 	public final static String CKLoginType 		= "3";

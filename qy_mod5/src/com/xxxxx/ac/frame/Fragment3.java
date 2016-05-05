@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.xxxxx.ac.R;
 import com.xxxxx.ac.Activity.UserLoginActivity;
 import com.xxxxx.ac.MOD.CONST;

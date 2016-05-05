@@ -37,6 +37,13 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" 
                  />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退出登录" />
+
         </LinearLayout>
 
         <ImageView
@@ -58,7 +65,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/list_view_style_selector"
+        android:padding="12dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="用户头像" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/user_head_new" />
+          <ImageView
+                android:id="@+id/ImageView09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:background="@drawable/list_view_style_selector"
         android:orientation="vertical" >
 
@@ -70,33 +105,20 @@
             android:gravity="center_vertical"
             android:padding="12dp" >
 
-            <ImageView
-                android:id="@+id/ImageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_listicon_diyongquan" />
-
-            <View
-                android:id="@+id/View07"
-                android:layout_width="20dp"
-                android:layout_height="match_parent" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
                     android:id="@+id/TextView04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="待付款订单" />
-            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ImageView08"
@@ -113,33 +135,20 @@
             android:gravity="center_vertical"
             android:padding="12dp" >
 
-            <ImageView
-                android:id="@+id/ImageView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_listicon_diyongquan" />
-
-            <View
-                android:id="@+id/View08"
-                android:layout_width="20dp"
-                android:layout_height="match_parent" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
                     android:id="@+id/TextView07"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="全部订单" />
-            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ImageView07"
@@ -152,7 +161,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/list_view_style_selector"
         android:orientation="vertical" >
 
@@ -164,33 +173,20 @@
             android:gravity="center_vertical"
             android:padding="12dp">
 
-            <ImageView
-                android:id="@+id/ImageView03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user_listicon_diyongquan" />
-
-            <View
-                android:id="@+id/View04"
-                android:layout_width="20dp"
-                android:layout_height="match_parent" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
                     android:id="@+id/TextView09"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="修改密码" />
-            </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -203,7 +199,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="12dp"
         android:gravity="center" >
 
         <Button

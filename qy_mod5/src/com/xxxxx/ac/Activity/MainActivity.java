@@ -3,19 +3,20 @@ package com.xxxxx.ac.Activity;
 import org.xutils.x;
 import org.xutils.view.annotation.ViewInject;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.xxxxx.ac.R;
+import com.xxxxx.ac.MOD.CONST;
 import com.xxxxx.ac.frame.Fragment1;
 import com.xxxxx.ac.frame.Fragment2;
 import com.xxxxx.ac.frame.Fragment3;
@@ -42,8 +43,15 @@ public class MainActivity extends FragmentActivity {
 		initRadioGroup();
 		fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 0));
 		fragmentPagerAdapter.finishUpdate(frameLayout);
+		initConst();
 	}
-
+	@SuppressWarnings("deprecation")
+	public void initConst(){
+		WindowManager windowManager = this.getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        CONST.screenWidth = display.getWidth();
+        CONST.screenHeight = display.getHeight();
+	}
 	@Override
 	protected void onResume() {
 		super.onResume();
