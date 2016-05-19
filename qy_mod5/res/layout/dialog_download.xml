@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:saund="http://schemas.android.com/apk/res/com.kince.saundprogressbar"
+    android:id="@+id/downloadAPK"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="12dp" >
+
+        <TextView
+            android:id="@+id/downloadTitleTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="下载中"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/downloadContextTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="正在下载对应的VR程序                                                                          " />
+
+        <com.kince.saundprogressbar.widget.SaundProgressBar
+            android:id="@+id/downloadProgressBar"
+            style="@style/Widget.ProgressBar.RegularProgressBar"
+            android:layout_width="fill_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/downloadPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0%" />
+
+            <TextView
+                android:id="@+id/downloadDegredd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/0" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

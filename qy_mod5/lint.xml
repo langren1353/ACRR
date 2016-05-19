@@ -1,3 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="ContentDescription">
+        <ignore path="res/layout/main_frame4.xml" />
+        <ignore path="res/layout/user_info2.xml" />
+        <ignore path="res/layout/user_register.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/main_frame4.xml" />
+        <ignore path="res/layout/user_info2.xml" />
+        <ignore path="res/layout/user_register.xml" />
+    </issue>
+    <issue id="InefficientWeight">
+        <ignore path="res/layout/main_frame4.xml" />
+        <ignore path="res/layout/user_info2.xml" />
+        <ignore path="res/layout/user_register.xml" />
+    </issue>
+    <issue id="NestedWeights">
+        <ignore path="res/layout/user_info2.xml" />
+    </issue>
+    <issue id="RtlHardcoded">
+        <ignore path="res/layout/user_info2.xml" />
+        <ignore path="res/layout/user_register.xml" />
+    </issue>
+    <issue id="RtlSymmetry">
+        <ignore path="res/layout/user_register.xml" />
+    </issue>
 </lint>
