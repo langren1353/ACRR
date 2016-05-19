@@ -34,6 +34,7 @@ public class CONST {
 	public final static int	 NOCODE		 = -5; //无该验证码
 	
 	public final static String baiduNews = "http://api.baiyue.baidu.com/sn/api/sentimentlist";
+	
 	public final static class baiduNewsData{
 		public final static String key1 = "dim";
 		public final static String key1_data = "0";
