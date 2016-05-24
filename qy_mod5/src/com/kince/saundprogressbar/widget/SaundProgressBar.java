@@ -29,7 +29,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
-import com.xxxxx.ac.R;
+import com.remix.acrr.R;
 
 public class SaundProgressBar extends ProgressBar {
 	private Drawable m_indicator;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xxxxx.ac"
+    package="com.remix.acrr"
     android:versionCode="2"
     android:versionName="1.0" >
 
@@ -57,7 +57,7 @@
             android:label="@string/news_info"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
-            android:name=".Activity.UserInfoActivity"
+            android:name=".Activity.User.UserInfoActivity"
             android:label="@string/user_info"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
@@ -71,13 +71,48 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
-            android:name=".Activity.UserRegisterActivity"
+            android:name=".Activity.User.UserRegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.xxxxx.ac.Activity.UserLoginActivity"
+            android:name=".Activity.User.UserLoginActivity"
             android:label="@string/title_activity_user_login"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Activity.UserSetting.UserSetting_Describe"
+            android:label="@string/title_activity_user_setting__describe"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Activity.UserSetting.UserSetting_AddressAll"
+            android:label="@string/title_activity_user_setting__address_all"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.xxxxx.ac.Activity.UserSetting.UserSetting_PwdChange"
+            android:label="@string/title_activity_user_setting__pwd_change"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Activity.UserOrders.UserOrdersAll"
+            android:label="@string/title_activity_user_orders_all"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Activity.UserOrders.UserOrdersNotComment"
+            android:label="@string/title_activity_user_orders_not_comment"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Activity.UserOrders.UserOrdersCollection"
+            android:label="@string/title_activity_user_orders_collection"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.remix.acrr.Activity.UserOrders.UserOrdersHistory"
+            android:label="@string/title_activity_user_orders_history"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
     </application>

@@ -8,5 +8,5 @@
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-
+	<dimen name="titleTextSize">18sp</dimen>
 </resources>
