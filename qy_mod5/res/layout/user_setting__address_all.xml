@@ -15,7 +15,7 @@
         android:padding="6dp" >
 
         <ImageView
-            android:id="@+id/UserSettingDescribeBack"
+            android:id="@+id/UserSettingAddressBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
@@ -32,6 +32,14 @@
             android:textColor="@color/black"
             android:textSize="@dimen/titleTextSize" />
 
+        <ImageView
+            android:id="@+id/UserSettingAddressAdd"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/adress_add" />
         
     </RelativeLayout>
 

@@ -4,7 +4,11 @@ import org.xutils.x;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +20,16 @@ import android.widget.ToggleButton;
 
 import com.remix.acrr.R;
 import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
+import com.remix.acrr.Activity.User.UserInfoActivity;
 import com.remix.acrr.ENTITY.Entity_CKUpdate;
 import com.remix.acrr.MOD.CONST;
+import com.remix.acrr.Tools.MyAndUtils;
 import com.remix.acrr.Tools.MyUtils;
 import com.remix.acrr.Tools.SharedUtil_SharedPrefs;
+import com.remix.acrr.dialog.AboutDialog;
+import com.remix.acrr.dialog.AlertDialog_MY;
+import com.remix.acrr.dialog.DownloadDialog;
+import com.remix.acrr.dialog.NotLoginDialog;
 
 public class Fragment4 extends Fragment {
 	@ViewInject(R.id.CKCabout)
@@ -43,6 +53,8 @@ public class Fragment4 extends Fragment {
 
 	SharedUtil_SharedPrefs sharedPrefs;
 	Boolean is_gprs_loadPIC = true;
+	private Handler handler;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		try{
@@ -53,8 +65,20 @@ public class Fragment4 extends Fragment {
 		}
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.main_frame4, null);
 		x.view().inject(this, view);// 不加this参数将注解失败--针对fragement的注解
-		textView.setText("当前版本:V" + MyUtils.getVersion(getActivity()));
+		textView.setText("当前版本:V" + MyAndUtils.getVersion(getActivity()));
 		gprsPicButton.setChecked(is_gprs_loadPIC);
+		handler = new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				if(msg.obj.equals("1")){
+					// 第一个按钮
+					new DownloadDialog(getActivity()).download(CONST.host+CONST.downloadUpdateUrl);
+				}else{
+					// 第二个按钮
+				}
+				super.handleMessage(msg);
+			}
+		};
 		return view;
 	}
 
@@ -78,6 +102,7 @@ public class Fragment4 extends Fragment {
 			sharedPrefs.putValue(CONST.setting_gprs, is_gprs_loadPIC);
 			break;
 		case R.id.CKCabout: // 关于
+			new AboutDialog(getActivity()).showDialog();
 			break;
 		case R.id.CKCbind: // 账号绑定
 			break;
@@ -89,13 +114,20 @@ public class Fragment4 extends Fragment {
 			FeedbackAPI.openFeedbackActivity(getActivity().getApplication());
 			break;
 		case R.id.CKCmyacount:// 我的账号
+			if(CONST.userInfo == null){
+				new NotLoginDialog(getActivity()).getDialog().show();
+			}else{
+				Intent intent = new Intent();
+				intent.setClass(getActivity(), UserInfoActivity.class);
+				startActivity(intent);
+			}
 			break;
 		case R.id.CKCupdate:// 检查更新
 			// 检查更新
 			// Toast.makeText(getContext(), "暂时没有更新",
 			// Toast.LENGTH_SHORT).show();
 			//new NoUpdateDialog(getActivity());
-			new Entity_CKUpdate(getActivity()).checkUpdate();
+			new Entity_CKUpdate(getActivity()).checkUpdate(handler);
 			break;
 		default:
 			Toast.makeText(getContext(), "点击事件哦", Toast.LENGTH_SHORT).show();

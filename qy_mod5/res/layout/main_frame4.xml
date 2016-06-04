@@ -56,6 +56,7 @@
         android:background="@drawable/list_view_style_selector"
         android:clickable="true"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="8dp" >
 
         <ImageView
@@ -98,8 +99,8 @@
 
         <ToggleButton
             android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/setting_btn_toggle"
             android:text="ToggleButton"
             android:textOff=""

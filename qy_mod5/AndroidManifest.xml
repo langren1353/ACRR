@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".Activity.MyApplication"
@@ -33,7 +34,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="2595df0c32855ecaa88567227cb7f06f" />
+            android:value="b670a50c3b0cdb2ac35adb3ffef8efde" />
         <meta-data
             android:name="5709f7e367e58e39e400151f"
             android:value="YOUR_APP_KEY" >
@@ -45,7 +46,7 @@
         <activity
             android:name=".Activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,65 +56,75 @@
         <activity
             android:name=".Activity.NewsDetailActivity"
             android:label="@string/news_info"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
         <activity
             android:name=".Activity.User.UserInfoActivity"
             android:label="@string/user_info"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
         <activity
-            android:name=".Activity.ShopInfoActivity"
+            android:name=".Activity.OrderInfoActivity"
             android:label="@string/title_activity_shop_info"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.GDMapActivity"
             android:label="@string/title_activity_gdmap"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.User.UserRegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.User.UserLoginActivity"
             android:label="@string/title_activity_user_login"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.UserSetting.UserSetting_Describe"
             android:label="@string/title_activity_user_setting__describe"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.UserSetting.UserSetting_AddressAll"
             android:label="@string/title_activity_user_setting__address_all"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.xxxxx.ac.Activity.UserSetting.UserSetting_PwdChange"
+            android:name=".Activity.UserSetting.UserSetting_PwdChange"
             android:label="@string/title_activity_user_setting__pwd_change"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name=".Activity.UserOrders.UserOrdersAll"
+            android:name=".Activity.UserOrders.UserOrdersMy"
             android:label="@string/title_activity_user_orders_all"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name=".Activity.UserOrders.UserOrdersNotComment"
+            android:name=".Activity.UserOrders.UserOrdersNeedMe"
             android:label="@string/title_activity_user_orders_not_comment"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Activity.UserOrders.UserOrdersCollection"
             android:label="@string/title_activity_user_orders_collection"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.remix.acrr.Activity.UserOrders.UserOrdersHistory"
+            android:name=".Activity.UserOrders.UserOrdersHistory"
             android:label="@string/title_activity_user_orders_history"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Activity.MakeOrderActivity"
+            android:label="@string/title_activity_make_order"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.remix.acrr.Activity.UserSetting.UserSetting_AddressGDMapSelect"
+            android:label="@string/title_activity_user_setting__address_gdmap_select"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
     </application>
 

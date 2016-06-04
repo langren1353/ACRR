@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.remix.acrr.R;
-import com.remix.acrr.Tools.MyUtils;
+import com.remix.acrr.Tools.MyAndUtils;
 
 public class UserSetting_Describe extends Activity {
 	@ViewInject(R.id.UserSettingDescribeBack)
@@ -27,7 +27,8 @@ public class UserSetting_Describe extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_setting__describe);
 		x.view().inject(this);
-		UserSettingDescribeBackBtn.setOnClickListener(new MyUtils.MyFinishClickListener(this));
+		UserSettingDescribeBackBtn.setOnClickListener(new MyAndUtils.MyFinishClickListener(this));
+		UserSettingDescribeContext.setText(getIntent().getStringExtra("describe"));
 	}
 	
 	@Event(R.id.UserSettingDescribeSubmit)
@@ -35,6 +36,7 @@ public class UserSetting_Describe extends Activity {
 		Intent intent = getIntent();
 		String Describe = UserSettingDescribeContext.getText().toString();
 		intent.putExtra("describe", Describe);
+		intent.putExtra("result", true);
 		setResult(103, intent);
 		finish();
 	}

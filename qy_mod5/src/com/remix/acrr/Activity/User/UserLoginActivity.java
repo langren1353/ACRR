@@ -1,6 +1,8 @@
 package com.remix.acrr.Activity.User;
 
+import org.xutils.DbManager;
 import org.xutils.x;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
@@ -31,7 +33,8 @@ import com.remix.acrr.ENTITY.Entity_Login;
 import com.remix.acrr.MOD.CONST;
 import com.remix.acrr.MOD.Mod_CheckCode;
 import com.remix.acrr.MOD.Mod_UserInfo;
-import com.remix.acrr.Tools.MyUtils;
+import com.remix.acrr.MOD.UserStore;
+import com.remix.acrr.Tools.MyAndUtils;
 
 public class UserLoginActivity extends Activity {
 	@ViewInject(R.id.GoRegister)
@@ -48,11 +51,12 @@ public class UserLoginActivity extends Activity {
 	Button btnDoLoginButton;
 	@ViewInject(R.id.login_title_back)
 	ImageView backButton;
-
+	
 	private Animation aniMovetoRight, aniMovetoLeft;
-	private int loginType = 1; // =验证码, 2=密码登录
-	private int codeType = 1; // =show, 2=hide
+	private int loginType = 1; // = 验证码, 2 = 密码登录
+	private int codeType = 1; // = show, 2 = hide
 	private Handler handler;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,16 +72,39 @@ public class UserLoginActivity extends Activity {
 			@Override
 			public void handleMessage(Message msg) {
 				Bundle bundle = msg.getData();
-				Mod_CheckCode modcheckCode =  (Mod_CheckCode) bundle.getSerializable("checkcode");
-//				Log.e("DEBUG2", modcheckCode.getErrInfo());
+				Mod_CheckCode modcheckCode = (Mod_CheckCode) bundle.getSerializable("checkcode");
+				// Log.e("DEBUG2", modcheckCode.getErrInfo());
 				switch (msg.what) {
+				case CONST.DELAY:
+					changeInLoginBtnTo(false, loginType);
+					btnInLoginButton.setText(msg.obj.toString()+"s");
+					if(((String)msg.obj).equals("0") && editTextLogin1.getText().length() == 11){
+						changeInLoginBtnTo(true, loginType);
+					}
+					break;
 				case CONST.OK:
 					Toast.makeText(UserLoginActivity.this, "登录成功", 0).show();
-					// TODO 登录成功之后应该跳转到一个页面
+					// TODO 登录成功之后应该跳转到一个页面 Frag3
 					Intent intent = getIntent();
 					Bundle returnBundle = new Bundle();
-					returnBundle.putSerializable("UserInfo", (Mod_UserInfo)modcheckCode.getRespObject());
+					Mod_UserInfo userInfo = (Mod_UserInfo) modcheckCode.getRespObject();
+					returnBundle.putSerializable("UserInfo", userInfo);
+					CONST.userInfo = userInfo;
 					intent.putExtras(returnBundle);
+					UserStore userStore = new UserStore();
+					userStore.setId(1);
+					userStore.setName(CONST.userInfo.getName());
+					userStore.setUserId(Long.parseLong(CONST.userInfo.getTel()));
+					userStore.setToken(CONST.userInfo.getToken());
+					userStore.setDescribe(CONST.userInfo.getDescribe());
+					userStore.setPic(CONST.userInfo.getPic());
+					
+					DbManager dbm = x.getDb(CONST.daoConfig);
+					try {
+						dbm.save(userStore);
+					} catch (DbException e) {
+						e.printStackTrace();
+					}
 					setResult(100, intent);
 					finish();
 					break;
@@ -105,7 +132,7 @@ public class UserLoginActivity extends Activity {
 			}
 
 		};
-		backButton.setOnClickListener(new MyUtils.MyFinishClickListener(this));
+		backButton.setOnClickListener(new MyAndUtils.MyFinishClickListener(this));
 		goRegisterBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -133,7 +160,7 @@ public class UserLoginActivity extends Activity {
 					} else {
 						changeDoLoginBtnTo(false);
 					}
-				}else{ //只有输入6位+密码才能触发
+				} else { // 只有输入6位+密码才能触发
 					if (len >= 6) {
 						changeDoLoginBtnTo(true);
 					} else {
@@ -202,7 +229,8 @@ public class UserLoginActivity extends Activity {
 		}
 		changeInLoginBtnTo(editTextLogin1.getText().length() == 11, loginType);
 	}
-	public void changeDoLoginBtnTo(boolean isEnable){
+
+	public void changeDoLoginBtnTo(boolean isEnable) {
 		btnDoLoginButton.setEnabled(isEnable);
 		if (isEnable == true) {
 			btnDoLoginButton.setBackgroundResource(R.drawable.register_btn_bg);
@@ -210,23 +238,25 @@ public class UserLoginActivity extends Activity {
 			btnDoLoginButton.setBackgroundResource(R.drawable.register_btn_bg_click);
 		}
 	}
-	public void changeInLoginBtnTo(boolean isEnable, int loginType){
-		if(loginType == 1){
+
+	public void changeInLoginBtnTo(boolean isEnable, int loginType) {
+		if (loginType == 1) {
 			btnInLoginButton.setEnabled(isEnable);
-			if(isEnable == true){
+			if (isEnable == true) {
 				btnInLoginButton.setText("获取验证码");
 				btnInLoginButton.setBackgroundResource(R.drawable.register_btn_getcode);
-			}else{
+			} else {
 				btnInLoginButton.setText("获取验证码");
 				btnInLoginButton.setBackgroundResource(R.drawable.register_btn_getcode2);
 			}
-		}else{
-			//始终是hide密码模式,并且可以点击
+		} else {
+			// 始终是hide密码模式,并且可以点击
 			btnInLoginButton.setText("");
 			btnInLoginButton.setBackgroundResource(R.drawable.hide_pwd);
 			btnInLoginButton.setEnabled(true);
 		}
 	}
+
 	@Event(value = R.id.btninLogin)
 	private void btnInLoginEvent(View v) {
 		if (loginType == 2) {
@@ -252,6 +282,8 @@ public class UserLoginActivity extends Activity {
 			Entity_Login entity_Login = new Entity_Login(this);
 			entity_Login.getCheckCode(CONST.SendCKLoginType, editTextLogin1.getText().toString(), handler);
 			// TODO 完成之后应该加上时间倒计时
+			Thread mThread = new ThreadTimeText();
+			mThread.start();
 		}
 	}
 
@@ -283,5 +315,23 @@ public class UserLoginActivity extends Activity {
 			Log.e("DEBUG2", "没有数据传递====未注册");
 		}
 		super.onActivityResult(requestCode, resultCode, intent);
+	}
+
+	public class ThreadTimeText extends Thread {
+		public int timecount = 60;
+		@Override
+		public void run() {
+			while (timecount >= 0) {
+				try {
+					Message message = new Message();
+					message.what = CONST.DELAY;
+					message.obj = timecount+"";
+					handler.sendMessage(message);
+					Thread.sleep(1000);
+					timecount --;
+				} catch (Exception e) {
+				}
+			}
+		}
 	}
 }

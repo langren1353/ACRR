@@ -20,8 +20,9 @@ import com.google.gson.reflect.TypeToken;
 import com.remix.acrr.ENTITY.RespData.ResponseObject;
 import com.remix.acrr.MOD.CONST;
 import com.remix.acrr.MOD.Mod_CheckCode;
-import com.remix.acrr.MOD.Mod_Shops;
+import com.remix.acrr.MOD.Mod_Orders;
 import com.remix.acrr.MOD.Mod_UserInfo;
+import com.remix.acrr.Tools.MyUtils;
 
 public class Entity_Login {
 	private Context context;
@@ -116,10 +117,9 @@ public class Entity_Login {
 		});
 	}
 	public void doLoginwithPWD(String tel, String pwd, final Handler handler){
-		////???未完成，需要继续处理
-		RequestParams requestParams = new RequestParams(CONST.host + CONST.getCheckCode);
+		RequestParams requestParams = new RequestParams(CONST.host + CONST.Login2Servlet);
 		requestParams.addBodyParameter("tel", tel);
-		pwd = GetMD5(pwd);
+		pwd = MyUtils.GetMD5(pwd);
 		requestParams.addBodyParameter("pwd", pwd); // 使用MD5传递
 		requestParams.setUseCookie(true);
 		
@@ -140,37 +140,22 @@ public class Entity_Login {
 			}
 
 			@Override
-			public void onSuccess(String arg0) {
-				Log.e("DEBUG2", arg0);
-				//返回登录成功的信息
+			public void onSuccess(String jsonString) {
+				Log.e("DEBUG2", jsonString);
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				ResponseObject<Mod_UserInfo> result = gson.fromJson(jsonString, new TypeToken<ResponseObject<Mod_UserInfo>>(){}.getType());
+				Mod_UserInfo userInfo = (Mod_UserInfo)result.getObject();
+				Bundle bundle = new Bundle();
+				Mod_CheckCode mod_CheckCode = new Mod_CheckCode();
+				mod_CheckCode.setRespObject(userInfo);
+				bundle.putSerializable("checkcode", mod_CheckCode);
+				Message message = new Message();
+				message.what = CONST.OK;
+				message.setData(bundle);
+				handler.sendMessage(message);
 			}
 		});
 	}
 	
-	//大写 32位
-	public final String GetMD5(String s) {
-		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-		try {
-			byte[] btInput = s.getBytes();
-			// 获得MD5摘要算法的 MessageDigest 对象
-			MessageDigest mdInst = MessageDigest.getInstance("MD5");
-			// 使用指定的字节更新摘要
-			mdInst.update(btInput);
-			// 获得密文
-			byte[] md = mdInst.digest();
-			// 把密文转换成十六进制的字符串形式
-			int j = md.length;
-			char str[] = new char[j * 2];
-			int k = 0;
-			for (int i = 0; i < j; i++) {
-				byte byte0 = md[i];
-				str[k++] = hexDigits[byte0 >>> 4 & 0xf];
-				str[k++] = hexDigits[byte0 & 0xf];
-			}
-			return new String(str).toUpperCase();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	
 }

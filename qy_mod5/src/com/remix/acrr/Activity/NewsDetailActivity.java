@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.remix.acrr.R;
 import com.remix.acrr.MOD.baidu.Mod_Content;
 import com.remix.acrr.MOD.baidu.Mod_News;
+import com.remix.acrr.Tools.MyAndUtils;
 import com.remix.acrr.Tools.MyUtils;
 
 public class NewsDetailActivity extends FragmentActivity {
@@ -68,7 +69,7 @@ public class NewsDetailActivity extends FragmentActivity {
 								LayoutParams.FILL_PARENT, contents.get(i).getImage().getHeight());
 						layoutParams.topMargin = 20;
 						imageView.setLayoutParams(layoutParams);
-						x.image().bind(imageView, contents.get(i).getImage().getUrl());
+						x.image().bind(imageView, contents.get(i).getImage().getUrl(), MyAndUtils.getImageOption());
 						News_bodyLayout.addView(imageView);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -77,7 +78,7 @@ public class NewsDetailActivity extends FragmentActivity {
 				}
 			}
 		}
-		buttonLeft.setOnClickListener(new MyUtils.MyFinishClickListener(this));
+		buttonLeft.setOnClickListener(new MyAndUtils.MyFinishClickListener(this));
 	}
 
 }

@@ -56,7 +56,7 @@ public class SaundProgressBar extends ProgressBar {
 
 		m_textPaint.setColor(Color.WHITE);
 		m_textPaint.setTextAlign(Align.CENTER);
-		m_textPaint.setTextSize(10);
+		m_textPaint.setTextSize(14);
 		m_textPaint.setFakeBoldText(true);
 
 		// get the styleable attributes as defined in the xml
@@ -65,7 +65,7 @@ public class SaundProgressBar extends ProgressBar {
 
 		if (a != null) {
 			m_textPaint.setTextSize(a.getDimension(
-					R.styleable.SaundProgressBar_textSize, 10));
+					R.styleable.SaundProgressBar_textSize, 14));
 			m_textPaint.setColor(a.getColor(
 					R.styleable.SaundProgressBar_textColor, Color.WHITE));
 

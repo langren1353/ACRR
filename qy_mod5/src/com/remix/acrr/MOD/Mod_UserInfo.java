@@ -11,6 +11,7 @@ public class Mod_UserInfo implements Serializable{
 	String describe;
 	String sex;
 	Date birth;
+	String token;
 	public String getTel() {
 		return tel;
 	}
@@ -53,5 +54,10 @@ public class Mod_UserInfo implements Serializable{
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 }

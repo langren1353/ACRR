@@ -5,11 +5,11 @@
     <string name="action_settings">设置</string>
     <string name="btn_bottom1">订单查看</string>
     <string name="btn_top1">最新订单查看</string>
-    <string name="btn_bottom2">家电维护相关</string>
+    <string name="btn_bottom2">维护相关</string>
     <string name="btn_top2">家电维护相关</string>
-    <string name="btn_bottom3">我的</string>
+    <string name="btn_bottom3">我的信息</string>
     <string name="btn_top3">我的</string>
-    <string name="btn_bottom4">设置</string>
+    <string name="btn_bottom4">系统设置</string>
     <string name="btn_top4">通用设置</string>
     <string name="user_info">用户信息</string>
     <string name="title_activity_shop_info">ShopInfo</string>
@@ -20,7 +20,7 @@
     <string name="title_activity_user_login">UserLoginActivity</string>
     <string name="login_tel_hint">请输入手机号</string>
     <string name="login_code_hint">请输入短信验证码</string>
-    <string name="login_account_hint">手机号、邮箱</string>
+    <string name="login_account_hint">手机号</string>
     <string name="login_pwd_hint">密码</string>
     <string name="title_activity_user_setting__describe">UserSetting_Describe</string>
     <string name="title_activity_user_setting__address_all">UserSetting_AddressAll</string>
@@ -29,5 +29,12 @@
     <string name="title_activity_user_orders_not_comment">UserOrdersNotComment</string>
     <string name="title_activity_user_orders_collection">UserOrdersCollection</string>
     <string name="title_activity_user_orders_history">UserOrdersHistory</string>
+    <string name="title_activity_make_order">MakeOrder</string>
+    <string name="edittext_hint_sub"><font size="11">请简单描述您遇到的问题</font></string>
+    <string name="edittext_hint_detail"><font size="11">在这里填写您遇到问题的详细内容</font></string>
+    <string name="edittext_hint_tel"><font size="11">请输入您的手机号码</font></string>
+    <string name="edittext_hint_price"><font size="11">请输入您预期的价格范围</font></string>
+    <string name="edittext_hint_addr"><font size="11">请填写您的详细地址</font></string>
+    <string name="title_activity_user_setting__address_gdmap_select">UserSetting_AddressGDMapSelect</string>
 
 </resources>

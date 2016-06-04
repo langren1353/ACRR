@@ -31,7 +31,7 @@ public class NoUpdateDialog {
 		btnOK.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
 				dialog.dismiss();
 			}
 		});

@@ -1,8 +1,9 @@
 package com.remix.acrr.Activity;
 
 import org.xutils.x;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
 import com.remix.acrr.R;
 import com.remix.acrr.MOD.CONST;
 import com.remix.acrr.frame.Fragment1;
@@ -30,20 +32,24 @@ public class MainActivity extends FragmentActivity {
 	@ViewInject(R.id.radio_tabBottom)
 	RadioGroup radioGroup;
 	FragmentPagerAdapter fragmentPagerAdapter;
-
+	@ViewInject(R.id.main_makeOrder)
+	ImageView				makeOrderImageView;
+	
 	public FragmentTransaction mFragmentTransaction;
 	public FragmentManager fragmentManager;
 	public String curFragmentTag = "2";
 	Fragment fragment;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		x.view().inject(this);
 		initRadioGroup();
-		fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 0));
-		fragmentPagerAdapter.finishUpdate(frameLayout);
+		radioGroup.check(R.id.radio0); //CHECK的时候用的是目的ID
+		//fragmentPagerAdapter.setPrimaryItem(frameLayout, 0, (Fragment) fragmentPagerAdapter.instantiateItem(frameLayout, 0));
+		//fragmentPagerAdapter.finishUpdate(frameLayout);
 		initConst();
 	}
 	@SuppressWarnings("deprecation")
@@ -53,15 +59,6 @@ public class MainActivity extends FragmentActivity {
         CONST.screenWidth = display.getWidth();
         CONST.screenHeight = display.getHeight();
 	}
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
 
 	public void initRadioGroup() {
 		fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -69,7 +66,6 @@ public class MainActivity extends FragmentActivity {
 			public int getCount() {
 				return 4;
 			}
-
 			@Override
 			public Fragment getItem(int arg0) { // ID就是普通ID计数
 				Fragment fragment = null;
@@ -86,7 +82,6 @@ public class MainActivity extends FragmentActivity {
 				case 3:
 					fragment = new Fragment4();
 					break;
-
 				default:
 					fragment = new Fragment1();
 					break;
@@ -94,7 +89,6 @@ public class MainActivity extends FragmentActivity {
 				return fragment;
 			}
 		};
-
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -131,6 +125,13 @@ public class MainActivity extends FragmentActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		fragment.onActivityResult(requestCode, resultCode, data);
-		//Log.e("DEBUG2", "main接收");
 	}
+    @Event(value=R.id.main_makeOrder)
+    private void BtnClickListener(View v){
+    	if(v.getId() == R.id.main_makeOrder){
+    		Intent intent = new Intent();
+    		intent.setClass(MainActivity.this, MakeOrderActivity.class);
+    		startActivityForResult(intent, 100);
+    	}
+    }
 }

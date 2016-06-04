@@ -19,7 +19,9 @@ import android.widget.TextView;
 
 import com.remix.acrr.R;
 import com.remix.acrr.Activity.NewsDetailActivity;
+import com.remix.acrr.MOD.CONST;
 import com.remix.acrr.MOD.baidu.Mod_News;
+import com.remix.acrr.Tools.MyAndUtils;
 import com.remix.acrr.Tools.MyUtils;
 
 public class NewsAdapter extends BaseAdapter {
@@ -34,7 +36,8 @@ public class NewsAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return news.size();
+		//return news.size();
+		return CONST.newsCount;
 	}
 
 	@Override
@@ -62,7 +65,7 @@ public class NewsAdapter extends BaseAdapter {
 		Mod_News onenew = news.get(position);
 		if(is_loadpic == true){
 			try{
-				x.image().bind(holder.news_bgImageView, onenew.getImageurls().get(0).getUrl(), MyUtils.getImageOption());
+				x.image().bind(holder.news_bgImageView, onenew.getImageurls().get(0).getUrl(), MyAndUtils.getImageOption());
 			}catch (Exception e) {
 				holder.news_bgImageView.setVisibility(View.GONE);
 			}

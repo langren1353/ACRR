@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xutils.x;
+import org.xutils.common.Callback;
 import org.xutils.common.Callback.CommonCallback;
 import org.xutils.ex.HttpException;
 import org.xutils.http.RequestParams;
@@ -75,10 +76,12 @@ public class Fragment2 extends Fragment {
 			System.out.println(one[0]+"="+one[1]);
 			requestParams.addBodyParameter(one[0], one[1]);
 		}
-		x.http().post(requestParams, new CommonCallback<String>() {
+		x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
 			@Override
 			public void onCancelled(CancelledException arg0) {
 			}
+
 			@Override
 			public void onError(Throwable arg0, boolean arg1) {
 				if (arg0 instanceof HttpException) { // ÍøÂç´íÎó
@@ -95,14 +98,15 @@ public class Fragment2 extends Fragment {
 					errorString += arg0.getMessage();
 				Log.e("DEBUG2", errorString);
 			}
+
 			@Override
 			public void onFinished() {
 			}
+
 			@Override
 			public void onSuccess(String arg0) {
 				System.out.println(arg0);
 				Entity_News entity_News = new Entity_News(arg0);
-				
 //				Gson gson = new Gson();
 //				ResponseObeject_BaiduNews responseObeject = gson.fromJson(arg0, ResponseObeject_BaiduNews.class);
 //				ArrayList<Mod_News> list = responseObeject.getData().getSentiment();
@@ -121,6 +125,7 @@ public class Fragment2 extends Fragment {
 					newsAdapter.notifyDataSetChanged();
 				}
 				listView.onRefreshComplete();
+			
 			}
 		});
 	}

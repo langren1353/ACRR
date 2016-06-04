@@ -65,10 +65,11 @@ public class SelectPicUtil {
         }
     }
     /**
-     * 处理获取的图片，注意判断空指针，默认大小480*480，比例1:1
+     * 处理获取的图片，注意判断空指针，默认大小126*126，比例1:1
      */
     public static Bitmap onActivityResult(Activity act, int requestCode, int resultCode, Intent data){
-        return onActivityResult(act, requestCode, resultCode, data, 0, 0, 0, 0);
+        Bitmap bitmap = onActivityResult(act, requestCode, resultCode, data, 126, 126, 0, 0);
+    	return bitmap;
     }
     /**
      * 处理获取的图片，注意判断空指针

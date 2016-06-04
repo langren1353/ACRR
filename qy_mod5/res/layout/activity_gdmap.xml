@@ -20,7 +20,7 @@
         android:orientation="horizontal" >
 
         <RadioButton
-            android:id="@+id/radio0"
+            android:id="@+id/GDMapDriveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
@@ -28,43 +28,20 @@
             android:checked="true"
             android:drawableTop="@drawable/map_car"
             android:gravity="center_horizontal"
-            android:text="X分钟"
-            android:textColor="@drawable/tab_bottom_text"
-            android:textSize="10sp" />
-
-        <RadioButton
-            android:id="@+id/radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="6dp"
-            android:button="@null"
-            android:drawableTop="@drawable/map_bus"
-            android:gravity="center_horizontal"
-            android:text="X分钟"
-            android:textColor="@drawable/tab_bottom_text"
-            android:textSize="10sp" />
-
-        <RadioButton
-            android:id="@+id/radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableTop="@drawable/map_walk"
-            android:gravity="center_horizontal"
-            android:text="X分钟"
+            android:text="0分钟"
             android:textColor="@drawable/tab_bottom_text"
             android:textSize="10sp" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/TextView03"
+        android:id="@+id/GDMapUseBaiduMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:textColor="@color/orange"
         android:layout_marginRight="8dp"
-        android:text="使用其他地图" />
+        android:text="使用百度地图" />
 
     <com.amap.api.maps2d.MapView
         android:id="@+id/MapView"

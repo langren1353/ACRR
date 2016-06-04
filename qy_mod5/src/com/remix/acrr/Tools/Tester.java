@@ -1,17 +1,21 @@
 package com.remix.acrr.Tools;
 
-import java.text.DecimalFormat;
+import java.sql.Timestamp;
 
 import org.junit.Test;
 
+import com.alibaba.sdk.android.location.a.b;
+import com.amap.api.services.core.bs;
+
 public class Tester {
-	public static String getTimeSize(int size){
-		DecimalFormat decimalFormat = new DecimalFormat("00");
-		return decimalFormat.format(size);
-	}
 	@Test
-	public void dksilj(){
-		int dd = 1;
-		System.out.println(getTimeSize(dd));
+	public void test(){
+		String aString = "2";
+		String bString = "2";
+		
+		String cString = new String("2");
+		bString = cString;
+		System.out.println(aString  == cString);
+		System.out.println(aString.equals(cString));
 	}
 }

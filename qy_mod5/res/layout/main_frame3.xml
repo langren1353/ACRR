@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
-     android:background="@color/background"
     tools:context="com.xxxxx.ac.frame.Fragment3" >
 
     <RelativeLayout
@@ -23,229 +23,213 @@
             android:textSize="@dimen/titleTextSize" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/userNotloginPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_good_list_select"
-        android:visibility="visible" >
+    
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:background="@drawable/user_head_new" />
+        <LinearLayout
+            android:id="@+id/userNotloginPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_good_list_select"
+            android:visibility="visible" >
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/user_head_notlogin" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="您还没有登录哦~" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp" />
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="false"
+                    android:background="@drawable/dialog_btn"
+                    android:text="点击登录" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/userPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_good_list_select"
+            android:clickable="true"
+            android:gravity="center"
+            android:visibility="visible" >
+
+            <ImageView
+                android:id="@+id/userheadicon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="50dp"
+                android:background="@null" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/userdescribe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="~~~~~~~~~~~" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:gravity="top|center"
             android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="您还没有登录哦~" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <View
-                android:id="@+id/view1"
-                android:layout_width="wrap_content"
-                android:layout_height="15dp" />
-
-            <Button
-                android:id="@+id/loginButton"
+            <TextView
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="false"
-                android:background="@drawable/dialog_btn"
-                android:text="点击登录" />
+                android:layout_gravity="left"
+                android:layout_marginTop="3dp"
+                android:drawableLeft="@drawable/ic_all"
+                android:paddingLeft="20dp"
+                android:text="我的订单" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center" >
+
+                <LinearLayout
+                    android:id="@+id/frame3OrdersMyBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/list_view_style_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/img_paied"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="我申报的" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/frame3OrdersNeedMeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/list_view_style_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/img_unpaided"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="我的任务" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/userPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_good_list_select"
-        android:gravity="center"
-        android:clickable="true"
-        android:visibility="visible" >
-
-        <ImageView
-            android:id="@+id/userheadicon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
-            android:background="@drawable/user_head_new" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:gravity="top|center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/TextView04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/userdescribe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="~~~~~~~~~~~" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/right" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="8dp"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:background="@color/white"
-        android:gravity="top|center"
-        android:orientation="vertical" >
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/ic_all"
-            android:paddingLeft="20dp"
-            android:text="我的订单" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
+                android:layout_gravity="left"
+                android:layout_marginTop="3dp"
+                android:drawableLeft="@drawable/select_point_time"
+                android:paddingLeft="20dp"
+                android:text="浏览信息" />
 
             <LinearLayout
-                android:id="@+id/frame3OrdersALlBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/list_view_style_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical" >
+                android:gravity="center" >
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/frame3OrdersHistoryBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/img_paied"
+                    android:background="@drawable/list_view_style_selector"
+                    android:clickable="true"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:text="全部订单" />
-            </LinearLayout>
+                    android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/frame3OrdersNotCommentBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/list_view_style_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/img_unpaided"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="待评价" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/user_listicon_yifukuan"
+                        android:gravity="center"
+                        android:text="最近浏览" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:gravity="top|center"
-        android:orientation="vertical" >
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/TextView04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="3dp"
-            android:drawableLeft="@drawable/select_point_time"
-            android:paddingLeft="20dp"
-            android:text="浏览信息" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center" >
-
-            <LinearLayout
-                android:id="@+id/frame3OrderCollectionBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/list_view_style_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/TextView05"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/user_listicon_tuijian"
-                    android:gravity="center"
-                    android:text="收藏" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/frame3OrdersHistoryBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/list_view_style_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/user_listicon_yifukuan"
-                    android:gravity="center"
-                    android:text="最近浏览" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
 </LinearLayout>

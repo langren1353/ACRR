@@ -109,7 +109,7 @@ public class DownloadDialog {
 		public void run() {
 			Log.e("DEBUG2", "×¼±¸ÏÂÔØThread");
 			RequestParams params = new RequestParams(APKurl);
-			params.setSaveFilePath("/storage/emulated/0/Download/vr.apk");
+			params.setSaveFilePath("/storage/emulated/0/Download/ACRR.apk");
 			x.http().get(params, new DownloadCallback(handler));
 //			Download load = new Download(
 //					"http://124.161.253.16/dd.myapp.com/16891/0B24D2420CE34621B8DCB22E87A09AED.apk?mkey=571f09e2317f342b&f=2320&c=0&fsname=com.youdao.course_1.3.1_1030100.apk&p=.apk", context);

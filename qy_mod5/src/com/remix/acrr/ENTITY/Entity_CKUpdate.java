@@ -4,11 +4,13 @@ import org.xutils.x;
 import org.xutils.common.Callback.CommonCallback;
 import org.xutils.http.RequestParams;
 
-import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Handler;
 
 import com.remix.acrr.MOD.CONST;
+import com.remix.acrr.Tools.MyAndUtils;
 import com.remix.acrr.Tools.MyUtils;
+import com.remix.acrr.dialog.AlertDialog_MY;
 import com.remix.acrr.dialog.DownloadDialog;
 import com.remix.acrr.dialog.NoUpdateDialog;
 
@@ -18,7 +20,7 @@ public class Entity_CKUpdate {
 	public Entity_CKUpdate(Context context){
 		this.context = context;
 	}
-	public void checkUpdate(){
+	public void checkUpdate(final Handler handler){
 		RequestParams requestParams = new RequestParams(CONST.host+CONST.updateUrl);
 		x.http().get(requestParams, new CommonCallback<String>() {
 			@Override
@@ -32,11 +34,12 @@ public class Entity_CKUpdate {
 			}
 			@Override
 			public void onSuccess(String arg0) {
-				String version = MyUtils.getVersion(context);
+				String version = MyAndUtils.getVersion(context);
 				if(arg0.equals(version)){
-					new NoUpdateDialog(context);
+					new NoUpdateDialog(context).showDialog();
 				}else{
-					new DownloadDialog(context).download(CONST.host+CONST.downloadUpdateUrl);;
+					String textString = "检查到最新版本为V"+arg0+",当前版本是V"+MyAndUtils.getVersion(context)+"点击确定进行更新";
+					new AlertDialog_MY(context).getDialog("更新",textString, "确定", "取消", handler).show();
 				}
 			}
 		});

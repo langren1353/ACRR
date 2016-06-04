@@ -23,12 +23,12 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.remix.acrr.R;
-import com.umeng.fb.util.Log;
 import com.remix.acrr.ENTITY.Entity_Registe;
 import com.remix.acrr.MOD.CONST;
 import com.remix.acrr.MOD.Mod_CheckCode;
 import com.remix.acrr.MOD.Mod_UserInfo;
-import com.remix.acrr.Tools.MyUtils;
+import com.remix.acrr.Tools.MyAndUtils;
+import com.umeng.fb.util.Log;
 
 public class UserRegisterActivity extends Activity {
 	@ViewInject(R.id.IsShowPwd)
@@ -50,7 +50,7 @@ public class UserRegisterActivity extends Activity {
 
 	private String checkCode;
 	private Handler handler;
-
+	Thread aThread;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,10 +66,23 @@ public class UserRegisterActivity extends Activity {
 				// 未注册则可以注册，注册过的请登录，注册失败返回原因
 				Bundle bundle = msg.getData();
 				Mod_CheckCode modcheckCode = (Mod_CheckCode) bundle.getSerializable("checkcode");
-				// Log.e("DEBUG2", modcheckCode.getErrInfo());
-				checkCode = modcheckCode.getCheckCode();
+				try {
+					checkCode = modcheckCode.getCheckCode();
+				} catch (Exception e) {
+				}
 				switch (msg.what) {
+				case CONST.DELAY:
+					btnGetCheckCode.setText(msg.obj.toString()+"s");
+					btnGetCheckCode.setEnabled(false);
+					btnGetCheckCode.setBackgroundResource(R.drawable.register_btn_getcode2);
+					if(((String)msg.obj.toString()).equals("0") && editTelText.getText().length() == 11){
+						btnGetCheckCode.setEnabled(true);
+						btnGetCheckCode.setBackgroundResource(R.drawable.register_btn_getcode);
+						btnGetCheckCode.setText("获取验证码");
+					}
+					break;
 				case CONST.OK:
+					aThread.stop();
 					Toast.makeText(UserRegisterActivity.this, "注册成功", 0).show();
 					// TODO 登录成功之后应该跳转到一个页面
 					Intent intent = getIntent();
@@ -104,7 +117,7 @@ public class UserRegisterActivity extends Activity {
 				super.handleMessage(msg);
 			}
 		};
-		btnBack.setOnClickListener(new MyUtils.MyFinishClickListener(this));
+		btnBack.setOnClickListener(new MyAndUtils.MyFinishClickListener(this));
 		editCheckCodeText.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -175,6 +188,8 @@ public class UserRegisterActivity extends Activity {
 			Log.e("DEBUG2", "请求服务器发送验证码");
 			// Toast.makeText(this, "准备请求服务器发送验证码", 1).show();
 			checkCode.getCheckCode(CONST.SendCKRegisteType, editTelText.getText().toString(), handler);
+			aThread = new ThreadTimeText();
+			aThread.start();
 			break;
 		case R.id.btnRegister:
 			Log.e("DEBUG2", "准备正式注册：上传手机号、验证码、密码");
@@ -205,5 +220,22 @@ public class UserRegisterActivity extends Activity {
 			return false;
 		}
 		return true;
+	}
+	public class ThreadTimeText extends Thread {
+		public int timecount = 60;
+		@Override
+		public void run() {
+			while (timecount >= 0) {
+				try {
+					Thread.sleep(1000);
+					Message message = new Message();
+					message.what = CONST.DELAY;
+					message.obj = timecount+"";
+					handler.sendMessage(message);
+					timecount --;
+				} catch (Exception e) {
+				}
+			}
+		}
 	}
 }
