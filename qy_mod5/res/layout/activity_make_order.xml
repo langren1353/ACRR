@@ -1,0 +1,280 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.remix.acrr.Activity.MakeOrderActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:padding="6dp" >
+
+        <ImageView
+            android:id="@+id/makeOrder_backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/left" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:text="呼叫服务"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titleTextSize" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="12dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="问题简述*"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/MakeOrder_Mod_NameSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="@string/edittext_hint_sub"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MakeOrderTimeSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_view_style_selector"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:padding="12dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="服务时间*"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/MakeOrder_Mod_ExpTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/garyPlus" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ImageView08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MakeOrderAddrSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_view_style_selector"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:padding="12dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="服务地点"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/MakeOrder_Mod_Addr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textColor="@color/garyPlus" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ImageView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MakeOrderIsRapid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/list_view_style_selector"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:padding="12dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="是否急单"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/MakeOrder_Mod_IsRapid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textColor="@color/garyPlus" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MakeOrderTelSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="12dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="联系电话*"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/MakeOrder_Mod_Tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/edittext_hint_tel"
+                    android:inputType="numberSigned"
+                    android:maxLength="11" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MakeOrderPriceSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="12dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="价格意向"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/MakeOrder_Mod_Money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:hint="@string/edittext_hint_price" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="详细情况描述："
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/MakeOrder_Mod_Describe"
+            android:layout_width="fill_parent"
+            android:layout_height="170dp"
+            android:hint="@string/edittext_hint_detail"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:theme="@drawable/edittext_selector" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/MakeOrderSubmitBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/button_style_enable_ornot"
+        android:text="呼叫服务"
+        android:textColor="@color/white" />
+
+</LinearLayout>

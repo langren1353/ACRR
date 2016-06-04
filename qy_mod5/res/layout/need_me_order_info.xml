@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.xxxxx.ac.Activity.ShopInfoActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:padding="6dp" >
+
+        <ImageView
+            android:id="@+id/OrderInfoBackBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/left" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:text="订单信息"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titleTextSize" />
+    </RelativeLayout>
+
+  <include
+
+        android:id="@+id/btn" layout="@layout/order_main_info"
+
+     android:layout_width="fill_parent"
+
+     android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/OrderInfoFinishBtn"
+        android:layout_width="fill_parent"
+        android:background="@drawable/button_style_enable_ornot"
+        android:layout_height="35dp"
+        android:layout_margin="12dp"
+        android:textColor="@color/white"
+        android:text="订单完成" />
+
+</LinearLayout>
